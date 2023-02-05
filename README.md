@@ -1,5 +1,5 @@
 # VNCAutoGrubber
-A script that takes ip addresses from computernewb.com and checks them for vulnerabilities by rebooting the machine via ctrl+alt+del, which further facilitates obtaining root access through the operating system bootloader
+A script that takes ip addresses from [VNC Resolver](https://computernewb.com/vncresolver) and checks them for vulnerabilities by rebooting the machine via ctrl+alt+del, which further facilitates obtaining root access through the operating system bootloader
 
 ```
 $ python main.py --help
