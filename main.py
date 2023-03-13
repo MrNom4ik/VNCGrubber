@@ -62,14 +62,14 @@ def get_host_address(filter_: str = None) -> str:
 
     if filter_:
         if not cache.get(filter_):
-            result = get(f"https://computernewb.com/vncresolver/api/clientname?clientname={filter_}").json()
+            result = get(f"https://computernewb.com/vncresolver/api/scans/vnc/search?clientname={filter_}").json()
             cache[filter_] = set(result['result'])
 
         host_id = cache[filter_].pop()
-        host = get(f"https://computernewb.com/vncresolver/api/id/{host_id}").json()
+        host = get(f"https://computernewb.com/vncresolver/api/scans/vnc/id/{host_id}").json()
         return f"{host['ip']}:{host['port']}"
     else:
-        host = get("https://computernewb.com/vncresolver/api/random").json()
+        host = get("https://computernewb.com/vncresolver/api/scans/vnc/random").json()
         return f"{host['ip']}:{host['port']}"
 
 
@@ -121,7 +121,7 @@ def get_many_valid_hosts(count: int = -1, filter_: str = None) -> Generator:
 
     if count == -1:
         while True:
-            yield get_one_valid_host(filter=filter_)
+            yield get_one_valid_host(filter_=filter_)
     else:
         for _ in range(count):
             yield get_one_valid_host(filter_=filter_)
