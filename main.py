@@ -49,7 +49,7 @@ def print_host(number: int, total: Union[int, str], host: str):
     logger.info(f'{host} - {number}/{total} host found')
 
     if args.output:
-        args.file.write(host+'\n')
+        args.output.write(host+'\n')
 
 
 def get_host_address(filter_: str = None) -> str:
